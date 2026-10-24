@@ -23,7 +23,7 @@ func (s *HTTPServer) StartServer() error {
 	router.Path("/tasks").Methods(http.MethodPost).HandlerFunc(s.httpHandlers.HandleCreateTask)
 	router.Path("/tasks/{title}").Methods(http.MethodGet).HandlerFunc(s.httpHandlers.HandleGetTask)
 	router.Path("/tasks").Methods(http.MethodGet).HandlerFunc(s.httpHandlers.HandleGetAllTasks)
-	router.Path("/tasks").Methods(http.MethodGet).Queries("completed", "true").HandlerFunc(s.httpHandlers.HandleGetAllUncompletedTasks)
+	router.Path("/tasks").Methods(http.MethodGet).Queries("completed", "false").HandlerFunc(s.httpHandlers.HandleGetAllUncompletedTasks)
 	router.Path("/tasks/{title}").Methods(http.MethodPatch).HandlerFunc(s.httpHandlers.HandleCompleteTask)
 	router.Path("/tasks/{title}").Methods(http.MethodDelete).HandlerFunc(s.httpHandlers.HandleDeleteTask)
 
